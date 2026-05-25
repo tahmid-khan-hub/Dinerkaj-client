@@ -1,6 +1,6 @@
 import { CheckSquare, Calendar, FileText } from 'lucide-react'
 
-type Page = 'tasks' | 'plans' | 'notes'
+export type Page = 'tasks' | 'plans' | 'notes'
 
 const navItems: { id: Page; label: string; icon: React.ElementType} [] = [
     { id: 'tasks', label: 'Tasks', icon: CheckSquare },
