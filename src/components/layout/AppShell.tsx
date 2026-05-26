@@ -1,23 +1,23 @@
-import { useState } from "react";
-import type { Page } from "./SidebarNav";
 import Sidebar from "./Sidebar";
 import MobileHeader from "./MobileHeader";
+import { useLocation } from "react-router";
 
 interface Props {
   children: React.ReactNode
 }
 
 export default function AppShell({ children } : Props) {
-    const [activePage, setActivePage] = useState<Page>('tasks');
+    const location = useLocation();
+    const activePage = location.pathname.replace('/','') as 'tasks' | 'plans' | 'notes';
 
     return (
-        <div className="flex overflow-hidden h-screen">
+        <div className="flex overflow-hidden h-screen bg-(--bg)">
             <div className="hidden md:flex">
-                <Sidebar activePage={activePage} onNavigate={setActivePage} />
+                <Sidebar activePage={activePage} onNavigate={() => {}} />
             </div>
             {/* mobile header */}
             <div className="md:hidden">
-                <MobileHeader activePage={activePage} onNavigate={setActivePage} />
+                <MobileHeader activePage={activePage} onNavigate={() => {}} />
             </div>
             <main className="flex-1 overflow-y-auto md:pt-0 pt-14">
                 {children}

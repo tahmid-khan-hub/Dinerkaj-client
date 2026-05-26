@@ -1,4 +1,5 @@
 import { CheckSquare, Calendar, FileText } from 'lucide-react'
+import { useNavigate } from 'react-router'
 
 export type Page = 'tasks' | 'plans' | 'notes'
 
@@ -14,7 +15,8 @@ interface SideBarNavProps {
     onClose?: () => void;
 }
 
-export default function SidebarNav({ activePage, onNavigate, onClose }: SideBarNavProps) {
+export default function SidebarNav({ activePage, onClose }: SideBarNavProps) {
+    const navigate = useNavigate();
     return (
         <nav className='flex flex-col gap-2 flex-1'>
             {navItems.map(({id, label, icon: Icon}) => (
@@ -25,7 +27,7 @@ export default function SidebarNav({ activePage, onNavigate, onClose }: SideBarN
                 ? 'bg-(--accent-soft) text-(--accent) font-medium' 
                 : 'text-(--text-secondary) hover:bg-(--bg-elevated) hover:text-(--text-primary)'}`}
                 onClick={() => {
-                    onNavigate(id)
+                    navigate(`/${id}`)
                     onClose?.()
                 }}
                 >
