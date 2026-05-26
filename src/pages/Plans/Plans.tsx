@@ -1,4 +1,4 @@
-export default function TasksPage(){
+export default function PlansPage(){
     return (
         <>
             
