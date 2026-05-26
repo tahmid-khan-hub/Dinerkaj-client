@@ -13,7 +13,7 @@ export default function MobileHeader({ activePage, onNavigate }: SidebarProps) {
         <span className="font-serif text-xl text-slate-100">Dinerkaj</span>
         <button
           onClick={() => setOpen(true)}
-          className="p-1.5 rounded-md text-slate-400 hover:text-slate-200 hover:bg-white/5 transition-colors"
+          className="p-1.5 rounded-md text-(--text-muted) hover:text-(--text-primary) hover:bg-white/5 transition-colors"
           aria-label="Open menu"
         >
           <Menu size={20} />
@@ -45,15 +45,15 @@ export default function MobileHeader({ activePage, onNavigate }: SidebarProps) {
             >
               <div className="flex items-start justify-between px-2">
                 <div className="flex flex-col gap-1">
-                  <span className="font-serif text-lg text-slate-100">
+                  <span className="font-serif text-lg text-(--text-primary)">
                     Dinerkaj
                   </span>
-                  <span className="text-[11px] text-slate-500 leading-relaxed">
+                  <span className="text-[11px] text-(--text-muted) leading-relaxed">
                     Your daily task & focus companion
                   </span>
                 </div>
                 <button onClick={() => setOpen(false)}
-                  className="p-1 rounded-md text-slate-500 hover:text-slate-200 hover:bg-white/5 transition-colors"> <X size={16} /> </button>
+                  className="p-1 rounded-md text-(--text-muted) hover:text-(--text-primary) hover:bg-white/5 transition-colors"> <X size={16} /> </button>
               </div>
 
               <SidebarNav

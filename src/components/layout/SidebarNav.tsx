@@ -21,7 +21,9 @@ export default function SidebarNav({ activePage, onNavigate, onClose }: SideBarN
                 <button
                 key={id}
                 className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm w-full text-left transition-colors duration-150 
-                ${activePage === id ? '' : ''}`}
+                ${activePage === id 
+                ? 'bg-(--accent-soft) text-(--accent) font-medium' 
+                : 'text-(--text-secondary) hover:bg-(--bg-elevated) hover:text-(--text-primary)'}`}
                 onClick={() => {
                     onNavigate(id)
                     onClose?.()
