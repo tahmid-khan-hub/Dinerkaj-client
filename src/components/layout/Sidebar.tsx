@@ -1,3 +1,4 @@
+import SidebarLoginButton from "./SidebarLoginButton";
 import type { Page } from "./SidebarNav"
 import SidebarNav from "./SidebarNav";
 
@@ -15,6 +16,8 @@ export default function Sidebar({ activePage, onNavigate } : SidebarProps) {
             </div>
 
             <SidebarNav activePage={activePage} onNavigate={onNavigate} />
+
+            <SidebarLoginButton />
         </aside>
     )
 }

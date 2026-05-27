@@ -3,6 +3,7 @@ import type { SidebarProps } from "@/types/Sidebar";
 import { useState } from "react";
 import SidebarNav from "./SidebarNav";
 import { AnimatePresence, motion } from "framer-motion";
+import SidebarLoginButton from "./SidebarLoginButton";
 
 export default function MobileHeader({ activePage, onNavigate }: SidebarProps) {
   const [open, setOpen] = useState(false);
@@ -61,6 +62,8 @@ export default function MobileHeader({ activePage, onNavigate }: SidebarProps) {
                 onNavigate={onNavigate}
                 onClose={() => setOpen(false)}
               />
+
+              <SidebarLoginButton />
             </motion.aside>
           </>
         )}
