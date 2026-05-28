@@ -1,7 +1,10 @@
+import { Suspense } from "react";
+import SignInContent from "./components/SignInContent";
+
 export default function SignInPage() {
     return (
-        <>
-            <h1>Sign in page</h1>
-        </>
+        <Suspense fallback={<p>loading...</p>}>
+            <SignInContent />
+        </Suspense>
     )
 }
