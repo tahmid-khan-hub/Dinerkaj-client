@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 
 export default function SignInContent() {
     const navigate = useNavigate();
+    const handleGoogleSignIn = async() => {
+        
+    }
+
   return (
     <div className="w-full bg-(--bg) min-h-screen flex items-center justify-center px-4">
       <motion.div
@@ -26,7 +30,8 @@ export default function SignInContent() {
         </div>
         {/* Form */}
         <SignInFormFields
-          onSuccess={() => navigate("/")}
+            onGoogleSignIn={handleGoogleSignIn}
+            onSuccess={() => navigate("/")}
         />
       </motion.div>
     </div>

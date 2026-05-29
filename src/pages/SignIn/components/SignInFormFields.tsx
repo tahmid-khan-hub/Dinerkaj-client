@@ -4,14 +4,26 @@ import { SuccessAlert } from "@/hooks/Alert/SuccessAlert";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react"
 
-export default function SignInFormFields() {
+interface SignInFormFieldsProps {
+  onGoogleSignIn: () => Promise<{ ok: boolean }>;
+}
+
+export default function SignInFormFields({ onGoogleSignIn }: SignInFormFieldsProps) {
     const [alertType, setAlertType] = useState<'success' | 'error' | null>(null);
     const [loading, setLoading] = useState(false);
+    const handleGoogleSignIn = async() => {
+        setLoading(true);
+        const result = await onGoogleSignIn();
+        setLoading(false);
 
+        if (result.ok)  setAlertType("success");
+        else  setAlertType("error");
+    }
     
     return (
         <div>
             <Button
+            onClick={handleGoogleSignIn}
             disabled={loading}
             className="w-full flex items-center justify-center gap-3 py-5 font-semibold text-base text-(--accent) bg-(--accent-soft) rounded-md transition-all disabled:opacity-50">
                 {/* Google SVG icon */}
