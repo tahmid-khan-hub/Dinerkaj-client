@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ErrorAlert } from "@/hooks/Alert/ErrorAlert";
-import { SuccessAlert } from "@/hooks/Alert/SuccessAlert";
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react"
 
@@ -10,19 +9,17 @@ interface SignInFormFieldsProps {
 }
 
 export default function SignInFormFields({ onGoogleSignIn }: SignInFormFieldsProps) {
-    const [alertType, setAlertType] = useState<'success' | 'error' | null>(null);
+    const [alertType, setAlertType] = useState<'error' | null>(null);
     const [loading, setLoading] = useState(false);
 
     const handleGoogleSignIn = async() => {
         setLoading(true);
         try {
             await onGoogleSignIn();
-            setAlertType("success");
         } catch {
             setAlertType("error")
-        } finally {
             setLoading(false)
-        }
+        } 
     }
     return (
         <div>
@@ -40,11 +37,6 @@ export default function SignInFormFields({ onGoogleSignIn }: SignInFormFieldsPro
                 {loading ? "Redirecting..." : "Continue with Google"}
             </Button>
             <AnimatePresence>
-                {alertType === 'success' && (
-                    <SuccessAlert title="Welcome Back!"
-                    description="You have successfully signed in to Dinerkaj."
-                    onClose={() => setAlertType(null)} />
-                )}
                 {alertType === 'error' && (
                     <ErrorAlert title="Sign In Falied"
                     description="Something went wrong. Please try again." 
