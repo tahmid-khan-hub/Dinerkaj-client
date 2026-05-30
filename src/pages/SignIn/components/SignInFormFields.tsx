@@ -5,21 +5,25 @@ import { AnimatePresence } from "framer-motion";
 import { useState } from "react"
 
 interface SignInFormFieldsProps {
-  onGoogleSignIn: () => Promise<{ ok: boolean }>;
+  onGoogleSignIn: () => void;
+  onSuccess?: () => void;
 }
 
 export default function SignInFormFields({ onGoogleSignIn }: SignInFormFieldsProps) {
     const [alertType, setAlertType] = useState<'success' | 'error' | null>(null);
     const [loading, setLoading] = useState(false);
+
     const handleGoogleSignIn = async() => {
         setLoading(true);
-        const result = await onGoogleSignIn();
-        setLoading(false);
-
-        if (result.ok)  setAlertType("success");
-        else  setAlertType("error");
+        try {
+            await onGoogleSignIn();
+            setAlertType("success");
+        } catch {
+            setAlertType("error")
+        } finally {
+            setLoading(false)
+        }
     }
-    
     return (
         <div>
             <Button

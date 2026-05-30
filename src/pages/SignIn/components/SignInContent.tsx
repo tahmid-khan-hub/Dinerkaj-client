@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router";
 import SignInFormFields from "./SignInFormFields";
 import { motion } from "framer-motion";
+import { authClient } from "@/lib/authClient";
 
 export default function SignInContent() {
     const navigate = useNavigate();
     const handleGoogleSignIn = async() => {
-        
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/"
+      })
     }
 
   return (
