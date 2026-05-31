@@ -11,7 +11,13 @@ export default function SidebarLoginButton() {
         await authClient.signOut()
     }
 
-    if(isPending) return <p>loading...</p>
+    if(isPending) return (
+        <div className="w-full h-10.5 rounded-2xl bg-(--accent-soft) flex items-center justify-center gap-2">
+            <div className="w-4 h-4 rounded-sm animate-pulse bg-(--bg-elevated)" />
+            <div className="w-15 h-3.5 rounded animate-pulse bg-(--bg-elevated)" />
+        </div>
+    )
+
     return (
         <>
             {!isLoggedIn ? (
