@@ -16,3 +16,15 @@ export interface TaskForm {
   priority: Priority;
   due_date: string;
 };
+
+export interface TasksPageHeadingProps {
+  onOpen: () => void;
+}
+
+export interface AddTaskModalProps {
+  onClose: () => void;
+}
+
+export interface AddTaskModalContentProps {
+  onClose: () => void;
+}

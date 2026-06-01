@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth"
 import { Plus } from "lucide-react";
+import type { TasksPageHeadingProps } from "../lib/types";
 
-export default function TasksPageHeading() {
+export default function TasksPageHeading({ onOpen } : TasksPageHeadingProps) {
     const { user } = useAuth();
     const firstName = user?.name?.split(" ")[0];
 
@@ -14,7 +15,7 @@ export default function TasksPageHeading() {
                 </h1>
             </div>
             <div>
-                <Button className="bg-(--accent-soft) text-(--accent) p-4">
+                <Button onClick={onOpen} className="bg-(--accent-soft) text-(--accent) p-4">
                     <Plus />
                     New Task
                 </Button>

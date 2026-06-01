@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { DialogContent, DialogHeader, DialogTitle, } from "@/components/ui/dialog";
 import { CalendarDays } from "lucide-react";
+import type { AddTaskModalContentProps } from "../../lib/types";
 
-export default function AddTaskModalContent() {
+export default function AddTaskModalContent({ onClose } : AddTaskModalContentProps) {
   return (
     <DialogContent className="font-serif border-(--border) text-(--text-primary) bg-(--bg-surface)">
       <DialogHeader>

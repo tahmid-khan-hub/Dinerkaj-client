@@ -3,8 +3,11 @@ import SignInSuccessAlert from "../SignIn/components/SignInSuccessAlert";
 import TaskItem from "./components/TaskItem";
 import TasksPageHeading from "./components/TasksPageHeading";
 import type { Task } from "./lib/types";
+import { useState } from "react";
+import AddTaskModal from "./components/AddTaskModal/AddTaskModal";
 
 export default function TasksPage(){
+    const [modalOpen, setModalOpen] = useState(false);
     const { data: tasks=[], isLoading } = useQuery<Task[]>({
         queryKey: ['tasks'],
         queryFn: async () => {
@@ -20,8 +23,9 @@ export default function TasksPage(){
             <SignInSuccessAlert />
 
             {/* components */}
-            <TasksPageHeading />
+            <TasksPageHeading onOpen={() => setModalOpen(true)} />
             <TaskItem />
+            <AddTaskModal onClose={() => setModalOpen(false)} />
         </>
     )
 }
