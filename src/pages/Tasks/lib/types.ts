@@ -22,9 +22,13 @@ export interface TasksPageHeadingProps {
 }
 
 export interface AddTaskModalProps {
+  open: boolean;
   onClose: () => void;
 }
 
 export interface AddTaskModalContentProps {
+  formData: TaskForm;
+  updateForm: (field: keyof TaskForm, value: string) => void;
+  handleClose: () => void;
   onClose: () => void;
 }

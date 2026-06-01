@@ -49,6 +49,7 @@ export default function AddTaskModalContent({ onClose } : AddTaskModalContentPro
         {/* Actions */}
         <div className="flex gap-2 pt-1">
             <Button
+              onClick={onClose}
               className="flex-1 bg-transparent border border-(--border) text-(--text-secondary) hover:bg-(--bg-elevated) hover:text-(--text-primary) transition-colors"
             >
               Cancel
