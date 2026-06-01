@@ -9,3 +9,10 @@ export interface Task {
   status: "pending" | "completed";
   completed_at?: string | null;
 }
+
+export interface TaskForm {
+  title: string;
+  description: string;
+  priority: Priority;
+  due_date: string;
+};
