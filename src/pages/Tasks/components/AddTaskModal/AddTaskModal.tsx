@@ -27,7 +27,7 @@ export default function AddTaskModal({ open, onClose } : AddTaskModalProps) {
             formData={formData}
             updateForm={updateForm}
             handleClose={handleClose}
-            onClose={onClose} />
+             />
         </Dialog>
     )
 }
