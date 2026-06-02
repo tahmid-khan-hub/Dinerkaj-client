@@ -30,7 +30,9 @@ export default function TasksPage(){
             {/* components */}
             <TasksPageHeading onOpen={() => setModalOpen(true)} />
             {/* active tasks card - where user can see todays tasks */}
-            <ActiveTasksCard tasks={pendingTasks} isLoading={isLoading} onToggle={handleToggle} />
+            <div className="p-3">
+                <ActiveTasksCard tasks={pendingTasks} isLoading={isLoading} onToggle={handleToggle} />
+            </div>
             {/* modal */}
             <AddTaskModal open={modalOpen} onClose={() => setModalOpen(false)} />
         </>
