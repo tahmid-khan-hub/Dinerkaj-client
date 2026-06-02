@@ -24,7 +24,6 @@ export default function TasksPage(){
 
             {/* components */}
             <TasksPageHeading onOpen={() => setModalOpen(true)} />
-            <TaskItem />
             <AddTaskModal open={modalOpen} onClose={() => setModalOpen(false)} />
         </>
     )

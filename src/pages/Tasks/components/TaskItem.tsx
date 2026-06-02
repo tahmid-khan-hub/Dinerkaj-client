@@ -1,26 +1,66 @@
-import { CheckCircle2, Circle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type { Task } from "../lib/types";
+import { CheckCircle2, Circle } from "lucide-react";
 
-export default function TaskItem() {
-    const isCompleted = 'completed';
-    return (
-        <div>
-            {/* checkbox */}
-            <button>
-                {isCompleted ? (<CheckCircle2 className="w-5 h-5 text-(--accent)" />) : (<Circle
-                className=
-                "w-5 h-5 transition-colors duration-150 hover:text-(--text-muted) hover:text-(--text-muted)" />) }
-            </button>
-            {/* content */}
-            <div className="flex flex-col gap-0.5 flex-1 min-w-0">
-                <span
-                className={cn(
-                "text-sm font-medium leading-snug truncate transition-colors duration-150",
-                isCompleted ? "line-through text-(--text-muted)"
-                : "text-(--text-primary)")}>
-                    title
-                </span>
-            </div>
+interface TaskItemProps {
+  task: Task;
+  onToggle: (id: string) => void;
+}
+
+export default function TaskItem({ task, onToggle }: TaskItemProps) {
+  const isCompleted = task.status === "completed";
+  return (
+    <div
+      className={cn(
+        "group flex items-start gap-3 px-4 py-3 rounded-lg border transition-all duration-200",
+        isCompleted
+          ? "border-transparent opacity-60"
+          : "border-transparent hover:border-(--border) hover:bg-(--bg-elevated)",
+      )}
+    >
+      {/* Checkbox */}
+      <button onClick={() => onToggle(task.id)} className="mt-0.5 shrink-0">
+        {isCompleted ? (
+          <CheckCircle2 className="w-5 h-5 text-(--accent)" />
+        ) : (
+          <Circle className="w-5 h-5 text-(--text-muted) group-hover:text-(--accent) transition-colors duration-150" />
+        )}
+      </button>
+
+      {/* Content */}
+      <div className="flex flex-col gap-0.5 flex-1 min-w-0">
+        <span
+          className={cn(
+            "text-sm font-medium leading-snug truncate transition-colors duration-150",
+            isCompleted
+              ? "line-through text-(--text-muted)"
+              : "text-(--text-primary)",
+          )}
+        >
+          {task.title}
+        </span>
+
+        {/* Meta */}
+        <div className="flex items-center gap-2 mt-0.5">
+          <span className="text-xs text-(--text-muted) capitalize">
+            {task.priority}
+          </span>
+          {task.due_date && !isCompleted && (
+            <>
+              <span className="text-xs text-(--text-muted)">·</span>
+              <span className="text-xs text-(--text-muted)">
+                Due {task.due_date}
+              </span>
+            </>
+          )}
+          {isCompleted && task.completed_at && (
+            <>
+              <span className="text-xs text-(--text-muted)">·</span>
+              <span className="text-xs text-(--text-muted)">Completed</span>
+            </>
+          )}
         </div>
-    )
+      </div>
+    </div>
+  );
 }
