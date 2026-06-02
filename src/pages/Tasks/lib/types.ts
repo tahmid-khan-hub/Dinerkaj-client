@@ -30,4 +30,6 @@ export interface AddTaskModalContentProps {
   formData: TaskForm;
   updateForm: (field: keyof TaskForm, value: string) => void;
   handleClose: () => void;
+  isPending: boolean;
+  onSubmit: () => void;
 }

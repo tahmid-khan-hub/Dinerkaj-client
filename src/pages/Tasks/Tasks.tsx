@@ -11,7 +11,7 @@ export default function TasksPage(){
     const { data: tasks=[], isLoading } = useQuery<Task[]>({
         queryKey: ['tasks'],
         queryFn: async () => {
-            const res = await fetch("http://localhost:3000/tasks", { credentials: "include" })
+            const res = await fetch("http://localhost:3000/api/tasks", { credentials: "include" })
             if (!res.ok) throw new Error("Failed to fetch tasks");
             return res.json();
         }
