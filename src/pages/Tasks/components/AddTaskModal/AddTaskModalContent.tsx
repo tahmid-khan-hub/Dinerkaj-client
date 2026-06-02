@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { DialogContent, DialogHeader, DialogTitle, } from "@/components/ui/dialog";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, Loader2 } from "lucide-react";
 import type { AddTaskModalContentProps } from "../../lib/types";
 import { priorities } from "../../lib/utils";
 
-export default function AddTaskModalContent({ formData, updateForm, handleClose } : AddTaskModalContentProps) {
+export default function AddTaskModalContent({ formData, updateForm, handleClose, isPending, onSubmit } : AddTaskModalContentProps) {
   return (
     <DialogContent className="font-serif border-(--border) text-(--text-primary) bg-(--bg-surface)">
       <DialogHeader>
@@ -81,10 +81,13 @@ export default function AddTaskModalContent({ formData, updateForm, handleClose 
               Cancel
             </Button>
             <Button
-              disabled={!formData.title.trim()}
+              onClick={onSubmit}
+              disabled={!formData.title.trim() || isPending}
               className="flex-1 bg-(--accent-soft) text-(--accent) border border-(--accent)/20 hover:bg-(--accent)/20 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
             >
-              Add Task
+              {isPending ? (
+              <span className="flex items-center gap-2"> <Loader2 className="w-3 h-3 animate-spin" /> Adding... </span>
+              ) : "Add Task"}
             </Button>
         </div>
       </div>
