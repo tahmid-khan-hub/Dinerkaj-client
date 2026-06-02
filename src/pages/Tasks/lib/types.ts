@@ -33,3 +33,9 @@ export interface AddTaskModalContentProps {
   isPending: boolean;
   onSubmit: () => void;
 }
+
+export interface ActiveTasksCardProps {
+  tasks: Task[];
+  isLoading: boolean;
+  onToggle: (id: string) => void;
+}
