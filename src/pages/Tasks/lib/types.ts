@@ -39,3 +39,8 @@ export interface ActiveTasksCardProps {
   isLoading: boolean;
   onToggle: (id: string) => void;
 }
+
+export interface CompletedTasksCardProps {
+  tasks: Task[];
+  onToggle: (id: string) => void;
+}

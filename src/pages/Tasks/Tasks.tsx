@@ -5,6 +5,7 @@ import type { Task } from "./lib/types";
 import { useState } from "react";
 import AddTaskModal from "./components/AddTaskModal/AddTaskModal";
 import ActiveTasksCard from "./components/TasksCard/ActiveTasksCard";
+import CompletedTasksCard from "./components/TasksCard/CompletedTasksCard";
 
 export default function TasksPage(){
     const [modalOpen, setModalOpen] = useState(false);
@@ -32,6 +33,10 @@ export default function TasksPage(){
             {/* active tasks card - where user can see todays tasks */}
             <div className="p-3">
                 <ActiveTasksCard tasks={pendingTasks} isLoading={isLoading} onToggle={handleToggle} />
+            </div>
+            {/* completed tasks card - shows the lists of completed task of particular day */}
+            <div>
+                <CompletedTasksCard tasks={completedTasks} onToggle={handleToggle} />
             </div>
             {/* modal */}
             <AddTaskModal open={modalOpen} onClose={() => setModalOpen(false)} />
