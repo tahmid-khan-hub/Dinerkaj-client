@@ -1,5 +1,6 @@
 import type { CompletedTasksCardProps } from "../../lib/types";
 import TaskItem from "../TaskItem";
+import TasksCardEmptyState from "./TasksCardEmptyState";
 
 export default function CompletedTasksCard({ tasks, onToggle, }: CompletedTasksCardProps) {
   
@@ -11,10 +12,12 @@ export default function CompletedTasksCard({ tasks, onToggle, }: CompletedTasksC
         </h2>
       </div>
       <div className="rounded-xl border border-(--border) bg-(--bg-surface) p-4 flex flex-col gap-2">
-        {tasks.length === 0 && <p>no completed tasks yet</p>}
-        {tasks.map((task) => (
-          <TaskItem key={task.id} task={task} onToggle={onToggle} />
-        ))}
+        {tasks.length === 0
+          ? <TasksCardEmptyState type="completed" />
+          : tasks.map(task => (
+              <TaskItem key={task.id} task={task} onToggle={onToggle} />
+            ))
+        }
       </div>
     </>
   );
