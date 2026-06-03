@@ -1,8 +1,8 @@
 import { Dialog } from "@/components/ui/dialog";
-import AddTaskModalContent from "./AddTaskModalContent";
 import type { AddTaskModalProps, TaskForm } from "../../lib/types";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import ModalContent from "../ModalContent";
 
 async function createNewTask(data: TaskForm) {
     const res = await fetch("http://localhost:3000/api/tasks", {
@@ -57,7 +57,7 @@ export default function AddTaskModal({ open, onClose } : AddTaskModalProps) {
     }
     return (
         <Dialog open={open} onOpenChange={handleClose}>
-            <AddTaskModalContent 
+            <ModalContent
             formData={formData}
             updateForm={updateForm}
             handleClose={handleClose}

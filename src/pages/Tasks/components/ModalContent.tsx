@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { DialogContent, DialogHeader, DialogTitle, } from "@/components/ui/dialog";
 import { CalendarDays, Loader2 } from "lucide-react";
-import type { AddTaskModalContentProps } from "../../lib/types";
-import { priorities } from "../../lib/utils";
+import type { ModalContentProps } from "../lib/types";
+import { priorities } from "../lib/utils";
 
-export default function AddTaskModalContent({ formData, updateForm, handleClose, isPending, onSubmit } : AddTaskModalContentProps) {
+export default function ModalContent({ formData, updateForm, handleClose, isPending, onSubmit } : ModalContentProps) {
   return (
     <DialogContent className="font-serif border-(--border) text-(--text-primary) bg-(--bg-surface)">
       <DialogHeader>

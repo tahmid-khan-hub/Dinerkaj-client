@@ -26,7 +26,7 @@ export interface AddTaskModalProps {
   onClose: () => void;
 }
 
-export interface AddTaskModalContentProps {
+export interface ModalContentProps {
   formData: TaskForm;
   updateForm: (field: keyof TaskForm, value: string) => void;
   handleClose: () => void;
