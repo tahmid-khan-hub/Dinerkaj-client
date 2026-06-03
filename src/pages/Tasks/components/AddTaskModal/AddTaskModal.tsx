@@ -37,9 +37,9 @@ export default function AddTaskModal({ open, onClose } : AddTaskModalProps) {
         }
     })
 
-    const updateForm = (field: keyof TaskForm, value: string) => {
-        setFormData(prev => ({...prev, [field]: value}))
-    }
+    const updateForm = (field: string, value: string) => {
+        setFormData(prev => ({ ...prev, [field]: value }));
+    };
 
     const handleClose = () => {
         setFormData(initialForm)

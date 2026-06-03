@@ -31,11 +31,14 @@ export interface AddTaskModalProps {
 
 // Modal
 export interface ModalContentProps {
-  formData: TaskForm;
-  updateForm: (field: keyof TaskForm, value: string) => void;
+  formData: { title: string; description: string; priority: Priority; due_date?: string };
+  updateForm: (field: string, value: string) => void;
   handleClose: () => void;
   isPending: boolean;
   onSubmit: () => void;
+  title?: string;
+  submitLabel?: string;
+  showDueDate?: boolean;
 }
 
 // Recurring tasks
