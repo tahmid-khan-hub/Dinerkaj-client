@@ -51,7 +51,7 @@ export default function TasksPage(){
                 <ActiveTasksCard tasks={pendingTasks} isLoading={isLoading} onToggle={handleToggle} />
             </div>
             {/* completed tasks card - shows the lists of completed task of particular day */}
-            <div>
+            <div className="p-3">
                 <CompletedTasksCard tasks={completedTasks} onToggle={handleToggle} />
             </div>
             {/* modal */}
