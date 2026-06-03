@@ -4,11 +4,11 @@ import { CalendarDays, Loader2 } from "lucide-react";
 import type { ModalContentProps } from "../lib/types";
 import { priorities } from "../lib/utils";
 
-export default function ModalContent({ formData, updateForm, handleClose, isPending, onSubmit } : ModalContentProps) {
+export default function ModalContent({ formData, updateForm, handleClose, isPending, onSubmit, title, submitLabel, showDueDate = true } : ModalContentProps) {
   return (
     <DialogContent className="font-serif border-(--border) text-(--text-primary) bg-(--bg-surface)">
       <DialogHeader>
-        <DialogTitle className="font-serif text-xl text-(--text-primary)"> New Task </DialogTitle>
+        <DialogTitle className="font-serif text-xl text-(--text-primary)"> {title ?? "New Task"} </DialogTitle>
       </DialogHeader>
 
       <div className="flex flex-col gap-4 mt-2">
@@ -58,7 +58,7 @@ export default function ModalContent({ formData, updateForm, handleClose, isPend
           </div>
         </div>
         {/* Due Date */}
-        <div className="flex flex-col gap-1.5">
+        {showDueDate && <div className="flex flex-col gap-1.5">
             <label className="text-xs text-(--text-secondary) uppercase tracking-wide">
               Due Date <span className="text-(--text-muted)">(optional)</span>
             </label>
@@ -66,12 +66,12 @@ export default function ModalContent({ formData, updateForm, handleClose, isPend
               <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-(--text-muted)" />
               <input
                 type="date"
-                value={formData.due_date}
+                value={formData.due_date ?? ""}
                 onChange={e => updateForm("due_date", e.target.value)}
                 className="w-full bg-(--bg-elevated) border border-(--border) rounded-md pl-9 pr-3 py-2 text-sm text-(--text-primary) outline-none focus:border-(--accent) transition-colors"
               />
             </div>
-        </div>
+        </div> }
         {/* Actions */}
         <div className="flex gap-2 pt-1">
             <Button
@@ -87,7 +87,7 @@ export default function ModalContent({ formData, updateForm, handleClose, isPend
             >
               {isPending ? (
               <span className="flex items-center gap-2"> <Loader2 className="w-3 h-3 animate-spin" /> Adding... </span>
-              ) : "Add Task"}
+              ) : (submitLabel ?? "Add Task")}
             </Button>
         </div>
       </div>
