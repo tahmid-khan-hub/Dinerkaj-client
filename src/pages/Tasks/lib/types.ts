@@ -1,5 +1,6 @@
 export type Priority = "low" | "medium" | "high";
 
+// Tasks page
 export interface Task {
   id: string;
   title: string;
@@ -17,15 +18,18 @@ export interface TaskForm {
   due_date: string;
 };
 
+// Tasks heading
 export interface TasksPageHeadingProps {
   onOpen: () => void;
 }
 
+// Add task modal
 export interface AddTaskModalProps {
   open: boolean;
   onClose: () => void;
 }
 
+// Modal
 export interface ModalContentProps {
   formData: TaskForm;
   updateForm: (field: keyof TaskForm, value: string) => void;
@@ -34,6 +38,19 @@ export interface ModalContentProps {
   onSubmit: () => void;
 }
 
+// Recurring tasks
+export interface RecurringTaskForm {
+  title: string;
+  description: string;
+  priority: Priority;
+};
+
+export interface AddRecurringTaskModalProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+// TasksCard
 export interface ActiveTasksCardProps {
   tasks: Task[];
   isLoading: boolean;
