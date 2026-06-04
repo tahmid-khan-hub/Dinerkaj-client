@@ -11,10 +11,14 @@ import DailyRoutinesCard from "./components/DailyRoutinesCard/DailyRoutinesCard"
 export default function TasksPage(){
     const [modalOpen, setModalOpen] = useState(false);
     const queryClient = useQueryClient();
-    const { data: tasks=[], isLoading } = useQuery<Task[]>({
-        queryKey: ['tasks'],
+    const { data: tasks = [], isLoading } = useQuery<Task[]>({
+        queryKey: ["tasks"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:3000/api/tasks", { credentials: "include" })
+            await fetch("http://localhost:3000/api/recurring-tasks/generate", {
+                method: "PATCH",
+                credentials: "include",
+            });
+            const res = await fetch("http://localhost:3000/api/tasks", { credentials: "include" });
             if (!res.ok) throw new Error("Failed to fetch tasks");
             return res.json();
         }
