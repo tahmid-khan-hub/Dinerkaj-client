@@ -4,6 +4,7 @@ import { useState } from "react"
 import AddRecurringTaskModal from "../AddRecurringTaskModal/AddRecurringTaskModal";
 import DailyRoutineItem from "./DailyRoutineItem";
 import type { RecurringTask } from "../../lib/types";
+import DailyRoutinesEmptyState from "./DailyRoutinesEmptyState";
 
 export default function DailyRoutinesCard() {
     const [addOpenModal, setAddOpenModal] = useState(false)
@@ -35,7 +36,7 @@ export default function DailyRoutinesCard() {
                 </div>
                 {/* Content */}
                 {routines.length === 0 ? 
-                    <p>add routine</p>
+                    <DailyRoutinesEmptyState onAdd={() => setAddModalOpen(true)} />
                     : 
                     <>
                         <div className="flex flex-col gap-1">
