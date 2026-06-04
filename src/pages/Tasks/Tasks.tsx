@@ -6,6 +6,7 @@ import { useState } from "react";
 import AddTaskModal from "./components/AddTaskModal/AddTaskModal";
 import ActiveTasksCard from "./components/TasksCard/ActiveTasksCard";
 import CompletedTasksCard from "./components/TasksCard/CompletedTasksCard";
+import DailyRoutinesCard from "./components/DailyRoutinesCard/DailyRoutinesCard";
 
 export default function TasksPage(){
     const [modalOpen, setModalOpen] = useState(false);
@@ -38,23 +39,26 @@ export default function TasksPage(){
 
     const pendingTasks = tasks.filter(task => task.status === 'pending');
     const completedTasks = tasks.filter(task => task.status === 'completed');
-
     const handleToggle = (id: string) => { toggleTask(id) }
     return (
         <>
             <SignInSuccessAlert />
-
-            {/* components */}
             <TasksPageHeading onOpen={() => setModalOpen(true)} />
-            {/* active tasks card - where user can see todays tasks */}
-            <div className="p-3">
+            <div className="p-3 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-3 items-start">
+                {/* Left column */}
+                <div className="flex flex-col gap-3">
                 <ActiveTasksCard tasks={pendingTasks} isLoading={isLoading} onToggle={handleToggle} />
-            </div>
-            {/* completed tasks card - shows the lists of completed task of particular day */}
-            <div className="p-3">
                 <CompletedTasksCard tasks={completedTasks} onToggle={handleToggle} />
+                </div>
+                {/* Right column */}
+                <div className="hidden lg:block">
+                    <DailyRoutinesCard />
+                </div>
             </div>
-            {/* modal */}
+            {/* Mobile only */}
+            <div className="lg:hidden px-3 pb-3">
+                <DailyRoutinesCard />
+            </div>
             <AddTaskModal open={modalOpen} onClose={() => setModalOpen(false)} />
         </>
     )
