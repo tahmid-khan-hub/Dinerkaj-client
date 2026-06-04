@@ -5,6 +5,7 @@ import AddRecurringTaskModal from "../AddRecurringTaskModal/AddRecurringTaskModa
 import DailyRoutineItem from "./DailyRoutineItem";
 import type { RecurringTask } from "../../lib/types";
 import DailyRoutinesEmptyState from "./DailyRoutinesEmptyState";
+import DailyRoutinesListModal from "./DailyRoutinesListModal";
 
 export default function DailyRoutinesCard() {
     const [addOpenModal, setAddOpenModal] = useState(false)
@@ -36,7 +37,7 @@ export default function DailyRoutinesCard() {
                 </div>
                 {/* Content */}
                 {routines.length === 0 ? 
-                    <DailyRoutinesEmptyState onAdd={() => setAddModalOpen(true)} />
+                    <DailyRoutinesEmptyState onAdd={() => setAddOpenModal(true)} />
                     : 
                     <>
                         <div className="flex flex-col gap-1">
@@ -56,7 +57,12 @@ export default function DailyRoutinesCard() {
             </div>
 
             <AddRecurringTaskModal open={addOpenModal} onClose={() => setAddOpenModal(false)} />
-            
+            <DailyRoutinesListModal
+                open={listModalOpen}
+                onClose={() => setListModalOpen(false)}
+                routines={routines}
+                onAdd={() => { setListModalOpen(false); setAddOpenModal(true); }}
+            />
         </>
     )
 }
