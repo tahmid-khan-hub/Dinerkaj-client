@@ -7,7 +7,7 @@ export default function DeleteRoutineDialog({ open, routineTitle, isPending, onC
     <AlertDialog open={open}>
       <AlertDialogContent className="bg-(--bg-surface) border border-(--border)">
         <AlertDialogHeader>
-          <AlertDialogTitle className="text-(--text-primary)">
+          <AlertDialogTitle className="text-(--text-primary) mb-4">
             Delete routine?
           </AlertDialogTitle>
           <AlertDialogDescription className="text-(--text-secondary)">
