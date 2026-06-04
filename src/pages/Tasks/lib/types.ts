@@ -20,6 +20,7 @@ export interface TaskForm {
 
 // Tasks heading
 export interface TasksPageHeadingProps {
+  taskCount: number;
   onOpen: () => void;
 }
 

@@ -47,7 +47,7 @@ export default function TasksPage(){
     return (
         <>
             <SignInSuccessAlert />
-            <TasksPageHeading onOpen={() => setModalOpen(true)} />
+            <TasksPageHeading taskCount={pendingTasks.length} onOpen={() => setModalOpen(true)} />
             <div className="p-3 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-3 items-start">
                 {/* Left column */}
                 <div className="flex flex-col gap-3">
