@@ -15,7 +15,7 @@ async function createNewTask(data: TaskForm) {
     return res.json();
 }
 
-export default function AddTaskModal({ open, onClose } : AddTaskModalProps) {
+export default function AddTaskModal({ open, onClose, onSuccess, onError } : AddTaskModalProps) {
     const queryClient = useQueryClient();
     const initialForm: TaskForm = {
         title: "",
@@ -31,10 +31,9 @@ export default function AddTaskModal({ open, onClose } : AddTaskModalProps) {
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["tasks"] })
             handleClose()
+            onSuccess()
         },
-        onError: () => {
-
-        }
+        onError: () => { onError() }
     })
 
     const updateForm = (field: string, value: string) => {

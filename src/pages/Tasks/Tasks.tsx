@@ -7,8 +7,12 @@ import AddTaskModal from "./components/AddTaskModal/AddTaskModal";
 import ActiveTasksCard from "./components/TasksCard/ActiveTasksCard";
 import CompletedTasksCard from "./components/TasksCard/CompletedTasksCard";
 import DailyRoutinesCard from "./components/DailyRoutinesCard/DailyRoutinesCard";
+import { AnimatePresence } from "framer-motion";
+import { SuccessAlert } from "@/hooks/Alert/SuccessAlert";
+import { ErrorAlert } from "@/hooks/Alert/ErrorAlert";
 
 export default function TasksPage(){
+    const [alertType, setAlertType] = useState<"success" | "error" | null>(null);
     const [modalOpen, setModalOpen] = useState(false);
     const queryClient = useQueryClient();
     const { data: tasks = [], isLoading } = useQuery<Task[]>({
@@ -63,7 +67,26 @@ export default function TasksPage(){
             <div className="lg:hidden px-3 pb-3">
                 <DailyRoutinesCard />
             </div>
-            <AddTaskModal open={modalOpen} onClose={() => setModalOpen(false)} />
+            <AddTaskModal open={modalOpen} onClose={() => setModalOpen(false)}
+            onSuccess={() => setAlertType("success")} onError={() => setAlertType("error")} />
+
+            {/* Alerts */}
+            <AnimatePresence>
+                {alertType === "success" && (
+                    <SuccessAlert
+                        title="Done!"
+                        description="Your task has been added successfully."
+                        onClose={() => setAlertType(null)}
+                    />
+                )}
+                {alertType === "error" && (
+                    <ErrorAlert
+                        title="Something went wrong"
+                        description="Failed to add task. Please try again."
+                        onClose={() => setAlertType(null)}
+                    />
+                )}
+            </AnimatePresence>
         </>
     )
 }

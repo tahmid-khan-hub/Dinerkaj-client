@@ -28,6 +28,8 @@ export interface TasksPageHeadingProps {
 export interface AddTaskModalProps {
   open: boolean;
   onClose: () => void;
+  onSuccess: () => void;
+  onError: () => void;
 }
 
 // Modal
