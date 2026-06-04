@@ -19,18 +19,12 @@ export function ErrorAlert({ title, description, onClose, }: {
       transition={{ duration: 0.3 }}
       className="fixed bottom-6 right-6 z-50"
     >
-      <Alert
-        style={{
-          background: "var(--bg-surface)",
-          borderColor: "var(--danger)",
-        }}
-        className="w-80"
-      >
-        <XCircleIcon style={{ color: "var(--danger)" }} className="mt-0.5" />
-        <AlertTitle style={{ color: "var(--danger)" }} className="mb-1">
+      <Alert className="w-80 bg-(--bg-surface) border border-(--text-muted)/40">
+        <XCircleIcon className="mt-0.5 text-(--text-secondary)" />
+        <AlertTitle className="mb-1 font-sans text-sm font-medium text-(--text-primary)">
           {title}
         </AlertTitle>
-        <AlertDescription style={{ color: "var(--danger)" }}>
+        <AlertDescription className="font-sans text-xs text-(--text-secondary)">
           {description}
         </AlertDescription>
       </Alert>

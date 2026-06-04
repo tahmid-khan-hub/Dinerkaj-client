@@ -19,21 +19,12 @@ export function SuccessAlert({ title, description, onClose, }: {
       transition={{ duration: 0.3 }}
       className="fixed bottom-6 right-6 z-50"
     >
-      <Alert
-        style={{
-          background: "var(--bg-surface)",
-          borderColor: "var(--success)",
-        }}
-        className="w-80"
-      >
-        <CheckCircle2Icon
-          style={{ color: "var(--success)" }}
-          className="mt-0.5"
-        />
-        <AlertTitle style={{ color: "var(--success)" }} className="mb-1">
+      <Alert className="w-80 bg-(--bg-surface) border border-(--accent)/40">
+        <CheckCircle2Icon className="mt-0.5 text-(--accent)" />
+        <AlertTitle className="mb-1 font-sans text-sm font-medium text-(--accent)">
           {title}
         </AlertTitle>
-        <AlertDescription style={{ color: "var(--success)" }}>
+        <AlertDescription className="font-sans text-xs text-(--text-secondary)">
           {description}
         </AlertDescription>
       </Alert>
