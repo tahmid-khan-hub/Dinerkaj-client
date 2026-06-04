@@ -42,6 +42,17 @@ export interface ModalContentProps {
 }
 
 // Recurring tasks
+export interface RecurringTask {
+  id: string;
+  user_id: string;
+  title: string;
+  description: string | null;
+  priority: Priority;
+  last_generated: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
 export interface RecurringTaskForm {
   title: string;
   description: string;

@@ -2,6 +2,8 @@ import { useQuery } from "@tanstack/react-query"
 import { Repeat } from "lucide-react";
 import { useState } from "react"
 import AddRecurringTaskModal from "../AddRecurringTaskModal/AddRecurringTaskModal";
+import DailyRoutineItem from "./DailyRoutineItem";
+import type { RecurringTask } from "../../lib/types";
 
 export default function DailyRoutinesCard() {
     const [addOpenModal, setAddOpenModal] = useState(false)
@@ -37,9 +39,9 @@ export default function DailyRoutinesCard() {
                     : 
                     <>
                         <div className="flex flex-col gap-1">
-                            {/* {preview.map((routine) => (
+                            {preview.map((routine: RecurringTask) => (
                                 <DailyRoutineItem key={routine.id} routine={routine} />
-                            ))} */}
+                            ))}
                         </div>
                         <button
                         onClick={() => setListModalOpen(true)}
