@@ -3,11 +3,11 @@ import { Repeat } from "lucide-react";
 import { useState } from "react"
 import AddRecurringTaskModal from "../AddRecurringTaskModal/AddRecurringTaskModal";
 import DailyRoutineItem from "./DailyRoutineItem";
-import type { RecurringTask } from "../../lib/types";
+import type { DailyRoutinesCardProps, RecurringTask } from "../../lib/types";
 import DailyRoutinesEmptyState from "./DailyRoutinesEmptyState";
 import DailyRoutinesListModal from "./DailyRoutinesListModal";
 
-export default function DailyRoutinesCard() {
+export default function DailyRoutinesCard({ onSuccess, onError } : DailyRoutinesCardProps) {
     const [addOpenModal, setAddOpenModal] = useState(false)
     const [listModalOpen, setListModalOpen] = useState(false)
 
@@ -56,7 +56,8 @@ export default function DailyRoutinesCard() {
                 }
             </div>
 
-            <AddRecurringTaskModal open={addOpenModal} onClose={() => setAddOpenModal(false)} />
+            <AddRecurringTaskModal open={addOpenModal} onClose={() => setAddOpenModal(false)}
+            onSuccess={onSuccess} onError={onError} />
             <DailyRoutinesListModal
                 open={listModalOpen}
                 onClose={() => setListModalOpen(false)}

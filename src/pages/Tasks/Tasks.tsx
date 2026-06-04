@@ -40,9 +40,6 @@ export default function TasksPage(){
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["tasks"] })
         },
-        onError: () => {
-
-        },
     })
 
     const pendingTasks = tasks.filter(task => task.status === 'pending');
@@ -60,12 +57,12 @@ export default function TasksPage(){
                 </div>
                 {/* Right column */}
                 <div className="hidden lg:block">
-                    <DailyRoutinesCard />
+                    <DailyRoutinesCard onSuccess={() => setAlertType("success")} onError={() => setAlertType("error")} />
                 </div>
             </div>
             {/* Mobile only */}
             <div className="lg:hidden px-3 pb-3">
-                <DailyRoutinesCard />
+                <DailyRoutinesCard onSuccess={() => setAlertType("success")} onError={() => setAlertType("error")} />
             </div>
             <AddTaskModal open={modalOpen} onClose={() => setModalOpen(false)}
             onSuccess={() => setAlertType("success")} onError={() => setAlertType("error")} />

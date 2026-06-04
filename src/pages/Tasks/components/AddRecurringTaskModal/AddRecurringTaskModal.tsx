@@ -21,7 +21,7 @@ async function createRecurringTasks(data: RecurringTaskForm) {
     return res.json();
 }
 
-export default function AddRecurringTaskModal({ open, onClose }: AddRecurringTaskModalProps) {
+export default function AddRecurringTaskModal({ open, onClose, onSuccess, onError }: AddRecurringTaskModalProps) {
     const queryClient = useQueryClient();
     const [formData, setFormData] = useState<RecurringTaskForm>(initialForm);
 
@@ -30,10 +30,9 @@ export default function AddRecurringTaskModal({ open, onClose }: AddRecurringTas
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ["recurring-tasks"] });
             handleClose();
+            onSuccess()
         },
-        onError: () => {
-
-        },
+        onError: () => { onError() },
     })
 
     const updateForm = (field: string, value: string) => {

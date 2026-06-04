@@ -65,6 +65,14 @@ export interface RecurringTaskForm {
 export interface AddRecurringTaskModalProps {
   open: boolean;
   onClose: () => void;
+  onSuccess: () => void;
+  onError: () => void;
+}
+
+// DailyRoutine Card
+export interface DailyRoutinesCardProps {
+  onSuccess: () => void;
+  onError: () => void;
 }
 
 // TasksCard
