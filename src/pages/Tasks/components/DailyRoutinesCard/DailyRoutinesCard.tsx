@@ -26,8 +26,8 @@ export default function DailyRoutinesCard() {
     const preview = routines.slice(0, 3);
     return (
         <>
-            <div>
-                <h2 className="font-medium text-(--text-secondary) uppercase tracking-wide px-2 my-3"> Daily Routines </h2>
+            <div className="mt-5">
+                <h2 className="font-medium text-(--text-secondary) uppercase tracking-wide px-2 mb-4"> Daily Routines </h2>
             </div>
             <div className="rounded-xl border border-(--border) bg-(--bg-surface) p-4 flex flex-col gap-3">
                 {/* Header */}
