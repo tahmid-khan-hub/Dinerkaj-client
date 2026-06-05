@@ -42,9 +42,21 @@ export default function TasksPage(){
         },
     })
 
+    const { mutate: deleteTask } = useMutation({
+        mutationFn: async(id: string) => {
+            const res = await fetch(`http://localhost:3000/api/tasks/${id}`, {method: "DELETE", credentials: "include",});
+            if(!res.ok) throw new Error("Failed to toggle task");
+            return res.json();
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries({ queryKey: ["tasks"] });
+        },
+    })
+
     const pendingTasks = tasks.filter(task => task.status === 'pending');
     const completedTasks = tasks.filter(task => task.status === 'completed');
     const handleToggle = (id: string) => { toggleTask(id) }
+    const handleDelete = (id: string) => deleteTask(id);
     return (
         <>
             <SignInSuccessAlert />
@@ -52,7 +64,7 @@ export default function TasksPage(){
             <div className="p-3 grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-3 items-start">
                 {/* Left column */}
                 <div className="flex flex-col gap-3">
-                <ActiveTasksCard tasks={pendingTasks} isLoading={isLoading} onToggle={handleToggle} />
+                <ActiveTasksCard tasks={pendingTasks} isLoading={isLoading} onToggle={handleToggle} onDelete={handleDelete} />
                 <CompletedTasksCard tasks={completedTasks} onToggle={handleToggle} />
                 </div>
                 {/* Right column */}

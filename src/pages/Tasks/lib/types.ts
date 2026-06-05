@@ -80,6 +80,7 @@ export interface ActiveTasksCardProps {
   tasks: Task[];
   isLoading: boolean;
   onToggle: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
 export interface CompletedTasksCardProps {
