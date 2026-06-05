@@ -16,7 +16,7 @@ interface DailyRoutinesListModalProps {
 };
 
 async function deleteRoutine(id: string) {
-  const res = await fetch(`/api/recurring-tasks/${id}`, { method: "DELETE" });
+  const res = await fetch(`http://localhost:3000/api/recurring-tasks/${id}`, { method: "DELETE", credentials: "include" });
   if (!res.ok) throw new Error("Failed to delete routine");
 }
 
