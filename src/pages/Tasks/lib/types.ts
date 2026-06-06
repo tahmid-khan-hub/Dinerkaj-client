@@ -96,3 +96,13 @@ export interface DeleteRoutineDialogProps {
   onConfirm: () => void;
   onCancel: () => void;
 }
+
+// DeleteDialog 
+export interface DeleteDialogProps {
+  open: boolean;
+  title: string;
+  description: string;
+  isPending: boolean;
+  onConfirm: () => void;
+  onCancel: () => void;
+}
