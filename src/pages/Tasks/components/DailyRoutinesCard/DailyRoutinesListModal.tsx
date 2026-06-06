@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
-import DeleteRoutineDialog from "./DeleteRoutine/DeleteRoutineDialog";
+import DeleteDialog from "../DeleteDialog";
 
 interface DailyRoutinesListModalProps {
   open: boolean;
@@ -56,9 +56,10 @@ export default function DailyRoutinesListModal({ open, onClose, routines, onAdd,
         </DialogContent>
       </Dialog>
 
-      <DeleteRoutineDialog
+      <DeleteDialog
         open={!!pendingDelete}
-        routineTitle={pendingDelete?.title ?? ""}
+        title="Delete routine?"
+        description={`"${pendingDelete?.title ?? ""}" will be permanently removed. Tasks already generated for today won't be affected.`}
         isPending={isPending}
         onConfirm={() => pendingDelete && mutate(pendingDelete.id)}
         onCancel={() => setPendingDelete(null)} />

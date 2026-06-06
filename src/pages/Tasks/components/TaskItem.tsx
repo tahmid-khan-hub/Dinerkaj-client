@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import type { Task } from "../lib/types";
 import { CheckCircle2, Circle, Trash2 } from "lucide-react";
 import { useState } from "react";
+import DeleteDialog from "./DeleteDialog";
 
 interface TaskItemProps {
   task: Task;
@@ -65,6 +66,7 @@ export default function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
           )}
         </div>
       </div>
+
       {/* Delete button */}
       {!isCompleted && (
         <button
@@ -74,6 +76,11 @@ export default function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
           <Trash2 className="w-4 h-4" />
         </button>
       )}
+
+      <DeleteDialog open={confirmOpen} title="Remove task?" description={`"${task.title}" will be permanently removed from today's list.`}
+      isPending={false}
+      onConfirm={() => { onDelete(task.id); setConfirmOpen(false); }}
+      onCancel={() => setConfirmOpen(false)} />
     </div>
   );
 }
