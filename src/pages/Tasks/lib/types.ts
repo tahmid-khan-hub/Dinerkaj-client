@@ -88,15 +88,6 @@ export interface CompletedTasksCardProps {
   onToggle: (id: string) => void;
 }
 
-// DeleteRoutine
-export interface DeleteRoutineDialogProps {
-  open: boolean;
-  routineTitle: string;
-  isPending: boolean;
-  onConfirm: () => void;
-  onCancel: () => void;
-}
-
 // DeleteDialog 
 export interface DeleteDialogProps {
   open: boolean;
