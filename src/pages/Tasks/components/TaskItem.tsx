@@ -1,14 +1,18 @@
 import { cn } from "@/lib/utils";
 import type { Task } from "../lib/types";
-import { CheckCircle2, Circle } from "lucide-react";
+import { CheckCircle2, Circle, Trash2 } from "lucide-react";
+import { useState } from "react";
 
 interface TaskItemProps {
   task: Task;
   onToggle: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
-export default function TaskItem({ task, onToggle }: TaskItemProps) {
+export default function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
+   const [confirmOpen, setConfirmOpen] = useState(false);
   const isCompleted = task.status === "completed";
+
   return (
     <div
       className={cn(
@@ -61,6 +65,15 @@ export default function TaskItem({ task, onToggle }: TaskItemProps) {
           )}
         </div>
       </div>
+      {/* Delete button */}
+      {!isCompleted && (
+        <button
+          onClick={() => setConfirmOpen(true)}
+          className="opacity-0 group-hover:opacity-100 transition-opacity mt-0.5 p-1 rounded text-(--text-muted) hover:text-red-400 hover:bg-(--bg-surface) shrink-0"
+          aria-label={`Delete ${task.title}`}>
+          <Trash2 className="w-4 h-4" />
+        </button>
+      )}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import TaskItem from "../TaskItem";
 import TasksCardEmptyState from "./TasksCardEmptyState";
 import TasksCardSkeleton from "./TasksCardSkeleton";
 
-export default function ActiveTasksCard({ tasks, isLoading, onToggle, }: ActiveTasksCardProps) {
+export default function ActiveTasksCard({ tasks, isLoading, onToggle, onDelete }: ActiveTasksCardProps) {
   
   return (
     <>
@@ -18,7 +18,7 @@ export default function ActiveTasksCard({ tasks, isLoading, onToggle, }: ActiveT
             : tasks.length === 0
                 ? <TasksCardEmptyState type="active" />
                 : tasks.map(task => (
-                    <TaskItem key={task.id} task={task} onToggle={onToggle} />
+                    <TaskItem key={task.id} task={task} onToggle={onToggle} onDelete={onDelete} />
                 ))
             }
         </div>
