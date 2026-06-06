@@ -3,6 +3,7 @@ import type { Task } from "../lib/types";
 import { CheckCircle2, Circle, Trash2 } from "lucide-react";
 import { useState } from "react";
 import DeleteDialog from "./DeleteDialog";
+import { formatDueDate } from "../lib/utils";
 
 interface TaskItemProps {
   task: Task;
@@ -54,7 +55,7 @@ export default function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
             <>
               <span className="text-xs text-(--text-muted)">·</span>
               <span className="text-xs text-(--text-muted)">
-                Due {task.due_date}
+                Due {formatDueDate(task.due_date)}
               </span>
             </>
           )}
@@ -71,7 +72,7 @@ export default function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
       {!isCompleted && (
         <button
           onClick={() => setConfirmOpen(true)}
-          className="opacity-0 group-hover:opacity-100 transition-opacity mt-0.5 p-1 rounded text-(--text-muted) hover:text-red-400 hover:bg-(--bg-surface) shrink-0"
+          className="opacity-0 group-hover:opacity-100 transition-opacity mt-1 p-1 rounded text-(--text-muted) hover:text-red-400 hover:bg-(--bg-surface) shrink-0"
           aria-label={`Delete ${task.title}`}>
           <Trash2 className="w-4 h-4" />
         </button>
