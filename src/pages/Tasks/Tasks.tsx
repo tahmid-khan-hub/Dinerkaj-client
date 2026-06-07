@@ -67,7 +67,7 @@ export default function TasksPage(){
                 <div className="flex flex-col gap-3">
                 <ActiveTasksCard tasks={pendingTasks} isLoading={isLoading} onToggle={handleToggle} onDelete={handleDelete} />
                     {/* Mobile only */}
-                    <div className="lg:hidden mt-9 pb-3"> <TaskProgressCircle /> </div>
+                    <div className="lg:hidden mt-6 pb-3"> <TaskProgressCircle /> </div>
                 <CompletedTasksCard tasks={completedTasks} onToggle={handleToggle} />
                 </div>
                 {/* Right column */}
