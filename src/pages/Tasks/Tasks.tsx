@@ -10,6 +10,7 @@ import DailyRoutinesCard from "./components/DailyRoutinesCard/DailyRoutinesCard"
 import { AnimatePresence } from "framer-motion";
 import { SuccessAlert } from "@/hooks/Alert/SuccessAlert";
 import { ErrorAlert } from "@/hooks/Alert/ErrorAlert";
+import TaskProgressCircle from "./components/TaskProgressCircle/TaskProgressCircle";
 
 export default function TasksPage(){
     const [alertType, setAlertType] = useState<"success" | "error" | null>(null);
@@ -65,10 +66,13 @@ export default function TasksPage(){
                 {/* Left column */}
                 <div className="flex flex-col gap-3">
                 <ActiveTasksCard tasks={pendingTasks} isLoading={isLoading} onToggle={handleToggle} onDelete={handleDelete} />
+                    {/* Mobile only */}
+                    <div className="lg:hidden mt-9 pb-3"> <TaskProgressCircle /> </div>
                 <CompletedTasksCard tasks={completedTasks} onToggle={handleToggle} />
                 </div>
                 {/* Right column */}
                 <div className="hidden lg:block">
+                    <TaskProgressCircle />
                     <DailyRoutinesCard onSuccess={() => setAlertType("success")} onError={() => setAlertType("error")} />
                 </div>
             </div>
