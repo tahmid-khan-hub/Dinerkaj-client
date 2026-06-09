@@ -1,3 +1,5 @@
+import { Dialog } from "@/components/ui/dialog";
+import NotesPageModalContent from "./NotesPageModalContent";
 
 interface NotesPageModalProps {
     open: boolean;
@@ -7,7 +9,9 @@ interface NotesPageModalProps {
 export default function NotesPageModal({ open, onClose }:NotesPageModalProps) {
     return (
         <>
-            
+            <Dialog open={open}>
+              <NotesPageModalContent />
+            </Dialog>
         </>
     )
 }
