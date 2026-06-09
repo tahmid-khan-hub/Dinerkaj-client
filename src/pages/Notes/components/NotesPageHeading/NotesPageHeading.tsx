@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 
-export default function NotesPageHeading() {
+interface NotesPageHeadingProps {
+    onOpen: () => void;
+}
+
+export default function NotesPageHeading({ onOpen } : NotesPageHeadingProps) {
     return (
         <>
             <div className="flex justify-between">
@@ -10,7 +14,7 @@ export default function NotesPageHeading() {
                     <p className="mt-1 text-sm text-(--text-secondary)">Capture your thoughts and organize your workflows.</p>
                 </div>
                 <div className="p-3">
-                    <Button className="bg-(--accent-soft) text-(--accent) p-5">
+                    <Button onClick={onOpen} className="bg-(--accent-soft) text-(--accent) p-5">
                     <Plus />
                     Create New Note
                 </Button>
