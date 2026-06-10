@@ -2,13 +2,13 @@
 export type Category = "personal" | "coding" | "research" | "other";
 
 export interface NotesForm {
-    notesTitle: string;
+    title: string;
     category: Category;
-    notesDescription: string;
+    description: string;
 }
 
 export interface NotesPageModalContentProps {
-    formData: { notesTitle: string; category: Category; notesDescription: string; };
+    formData: { title: string; category: Category; description: string; };
     updateForm: (field: string, value: string) => void;
     handleClose: () => void;
     isPending: boolean;

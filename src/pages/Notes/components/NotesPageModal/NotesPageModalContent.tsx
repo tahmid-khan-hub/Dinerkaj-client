@@ -17,7 +17,7 @@ export default function NotesPageModalContent({formData, updateForm, handleClose
                         <label className="text-xs text-(--text-secondary) uppercase tracking-wide"> Notes Title </label>
                         <input
                         type="text" placeholder="Enter a descriptive title..."
-                        value={formData.notesTitle} 
+                        value={formData.title} 
                         onChange={e => updateForm("notesTitle", e.target.value)}
                         className="w-full bg-(--bg-elevated) border border-(--border) rounded-md px-3 py-2 text-sm text-(--text-primary) placeholder:text-(--text-muted) outline-none focus:border-(--accent) transition-colors"
                         />
@@ -45,7 +45,7 @@ export default function NotesPageModalContent({formData, updateForm, handleClose
                         <label className="text-xs text-(--text-secondary) uppercase tracking-wide"> Write your thoughts </label>
                         <textarea
                         placeholder="Start typing your brilliance here..." rows={6}
-                        value={formData.notesDescription}
+                        value={formData.description}
                         onChange={e => updateForm("notesDescription" ,e.target.value)}
                         className="w-full bg-(--bg-elevated) border border-(--border) rounded-md px-3 py-2 text-sm text-(--text-primary) placeholder:text-(--text-muted) outline-none focus:border-(--accent) transition-colors resize-none"
                         />
@@ -60,7 +60,7 @@ export default function NotesPageModalContent({formData, updateForm, handleClose
                         </Button>
                         <Button
                         onClick={onSubmit}
-                        disabled={!formData.notesTitle.trim() || isPending}
+                        disabled={!formData.title.trim() || isPending}
                         className="flex-1 bg-(--accent-soft) text-(--accent) border border-(--accent)/20 hover:bg-(--accent)/20 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
                         >
                             Save Note

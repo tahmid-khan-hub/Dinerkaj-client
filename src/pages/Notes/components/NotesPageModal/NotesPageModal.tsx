@@ -12,9 +12,9 @@ interface NotesPageModalProps {
 export default function NotesPageModal({ open, onClose }:NotesPageModalProps) {
   const queryClient = useQueryClient();
   const NotesInitialForm: NotesForm = {
-    notesTitle: "",
+    title: "",
     category: "personal",
-    notesDescription: "",
+    description: "",
   }
 
   const [notesFormData, setNotesFormData] = useState<NotesForm>(NotesInitialForm);
@@ -47,10 +47,10 @@ export default function NotesPageModal({ open, onClose }:NotesPageModalProps) {
   }
 
   const submitNote = () => {
-    if(!notesFormData.notesTitle.trim()) return;
+    if(!notesFormData.title.trim()) return;
     mutate({...notesFormData, 
-      notesTitle: notesFormData.notesTitle.trim(),
-      notesDescription: notesFormData.notesDescription.trim(),
+      title: notesFormData.title.trim(),
+      description: notesFormData.description.trim(),
     })
   }
   return (
