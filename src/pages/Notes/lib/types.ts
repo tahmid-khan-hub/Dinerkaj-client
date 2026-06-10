@@ -6,3 +6,11 @@ export interface NotesForm {
     category: Category;
     notesDescription: string;
 }
+
+export interface NotesPageModalContentProps {
+    formData: { notesTitle: string; category: Category; notesDescription: string; };
+    updateForm: (field: string, value: string) => void;
+    handleClose: () => void;
+    isPending: boolean;
+    onSubmit: () => void;
+}
